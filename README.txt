@@ -1,5 +1,4 @@
-Hello and welcome to City³! The penultimate City Gamemode for Eric Hartman's Blockland©, this gamemode hopes to
-offer as described below:
+Hello and welcome to City³! The penultimate City Gamemode for Eric Hartman's Blockland©, this gamemode hopes to offer as described below:
 
 -Creates, manages, and facilitates a database (kept on file)
 	-Manages groups, their owner(s) and members, the day it was created, and days since creation, its group type (Corp, Gang, or Admin)

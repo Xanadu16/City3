@@ -1,8 +1,11 @@
-if(!isObject(C3SO))
+if(!isObject(C3Wallet))
 {
-	new scriptObject(C3SO) 
-	{
-		citizens = 0;
-		groups = 0;
-	};
+	new scriptObject(C3WalletSO) {};
 }
+
+function C3Wallet::add(%this,%obj,%arg)
+{	
+	
+
+
+

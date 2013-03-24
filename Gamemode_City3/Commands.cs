@@ -13,13 +13,13 @@ serverCmdGui(%client)
 	messageClient(%client, '', "\c2 You don't have the City3 Client! Please download it: (link here)");
 }
 
-serverCmdSetAlias(%client,arg0,arg1,arg2)
+serverCmdSetAlias(%client,%arg0,%arg1,%arg2)
 {
 	if(!arg2 $= "")
 	{
 		messageClient(%client, '', "\c2 Please keep your alias less than two names. (First and last)");
 		return;
 	}
-	%client.C3Alias_First = arg0;
-	%client.C3Alias_Last = arg1;
+	%client.C3Alias_First = %arg0;
+	%client.C3Alias_Last = %arg1;
 }

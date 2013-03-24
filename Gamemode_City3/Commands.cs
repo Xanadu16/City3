@@ -1,5 +1,21 @@
 //Hastily did these at 12:30am while partially dehydrated. Don't bother me if something's incorrect. -Evar678
 
+serverCmdPay(%client,%target,%amount)
+{
+	%target = findclientbyname(%target);
+
+	if(!%client.player)
+		return;
+	if(!%target.player)
+		return;
+	if(%client.C3_Cash < %amount)
+	{
+		messageClient(%client, '', "\c2 You don't have enough money to pay that!");
+		return;
+	}
+
+}
+
 serverCmdGui(%client)
 {
 	if(%client.C3HasClient)

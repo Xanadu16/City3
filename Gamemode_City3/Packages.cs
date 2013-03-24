@@ -8,6 +8,30 @@ package C3Pack
 		
 		return %v;
 	}
+
+	function Armor::onCollision(%this,%obj,%col,%thing,%other) //Cash pickup
+	{
+		if(%col.getDatablock().getName() $= "droppedcashitem")
+		{
+			if(isObject(%obj.client))
+			{
+				if(isObject(%col))
+				{
+					%obj.client.c3wallet.add("cash",%col.value);
+					messageClient(%obj.client, '', "\c6You have picked up" SPC CashStr(%col.value,"") @ "\c6.");
+					%col.canPickup = false;
+					%col.delete();
+					
+					return;
+				} else {
+					%col.delete();
+					MissionCleanup.remove(%col);
+				}
+			}
+		} else {
+			Parent::onCollision(%this,%obj,%col,%thing,%other);
+		}
+	}
 };
 activatepackage(C3Pack);
 

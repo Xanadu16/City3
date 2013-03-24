@@ -5,12 +5,24 @@ if(!isObject(C3Wallet))
 
 function C3Wallet::add(%this,%obj,%arg)
 {	
-switch(%obj)
+	switch(%obj)
 	{
-		case "money"
+		case "money":
 			%this.money += %arg;
-		case "bankm"
+		case "bankm":
 			%this.bankm += %arg;
 	}
-%this.cashUpdated = 1;
+	%this.cashUpdated = 1;
+}
+
+function C3Wallet::subtract(%this,%obj,%arg)
+{
+	switch(%obj)
+	{
+		case "money":
+			%this.money -= %arg;
+		case "bankm":
+			%this.bankm -= %arg;
+	}
+	%this.cashUpdated = 1;
 }

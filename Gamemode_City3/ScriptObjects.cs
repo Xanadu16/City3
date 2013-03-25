@@ -56,5 +56,5 @@ function C3Wallet::trade(%this,%client,%target,%obj,%task,%arg)
 			}
 		}
 	}
-
+	%this.cashUpdated = 1;
 }

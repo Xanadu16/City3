@@ -8,11 +8,13 @@ serverCmdPay(%client,%target,%amount)
 		return;
 	if(!%target.player)
 		return;
-	if(%client.C3_Cash < %amount)
+	if(%client.C3Wallet.money < %amount)
 	{
 		messageClient(%client, '', "\c2 You don't have enough money to pay that!");
 		return;
 	}
+	%client.C3Wallet.trade(%client,%target,"money","give",%amount);
+	%target.C3Wallet.trade(%target,%client,"money","recieve",%amount);
 
 }
 

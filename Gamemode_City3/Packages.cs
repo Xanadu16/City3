@@ -35,8 +35,7 @@ package C3Pack
 };
 activatepackage(C3Pack);
 
-function C3_returnHandshake(%client, %version)
+function C3_returnHandshake(%client)
 {
-	if(%version == $ES::Server::Version)
 		%client.c3HasClient = 1;
 }

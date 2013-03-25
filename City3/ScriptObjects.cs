@@ -1,6 +1,6 @@
 if(!isObject(C3Wallet))
 {
-	new scriptObject(C3WalletSO) {};
+	new scriptObject(C3Wallet) {};
 }
 
 function C3Wallet::add(%this,%obj,%arg)
@@ -63,4 +63,17 @@ function C3Wallet::trade(%this,%client,%target,%obj,%task,%arg)
 			}
 	}
 	%this.cashUpdated = 1;
+}
+
+function C3Wallet::Create(%this,%client)
+{
+	if(isObject(%client))
+	{
+		%this.client = %client;
+		%this.client.C3Wallet = %this;
+	}
+	else
+		return 1;
+		
+	return 0;
 }

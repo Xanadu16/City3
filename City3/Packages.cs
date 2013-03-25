@@ -3,9 +3,9 @@ package C3Pack
 	function GameConnection::autoAdminCheck(%client)
 	{
 		%v = Parent::autoAdminCheck(%client);
-		
 		schedule(500,0,"commandToClient",%client,'C3_Handshake',$C3::Server::Version);
-		
+		C3Wallet.create(%client);
+
 		return %v;
 	}
 

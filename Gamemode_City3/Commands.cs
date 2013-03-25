@@ -1,6 +1,6 @@
 //Hastily did these at 12:30am while partially dehydrated. Don't bother me if something's incorrect. -Evar678
 
-serverCmdPay(%client,%target,%amount)
+function serverCmdPay(%client,%target,%amount)
 {
 	%target = findclientbyname(%target);
 
@@ -18,7 +18,7 @@ serverCmdPay(%client,%target,%amount)
 
 }
 
-serverCmdGui(%client)
+function serverCmdGui(%client)
 {
 	if(%client.C3HasClient)
 	{
@@ -31,7 +31,7 @@ serverCmdGui(%client)
 	messageClient(%client, '', "\c2 You don't have the City3 Client! Please download it: (link here)");
 }
 
-serverCmdSetAlias(%client,%arg0,%arg1,%arg2)
+function serverCmdSetAlias(%client,%arg0,%arg1,%arg2)
 {
 	if(!arg2 $= "")
 	{

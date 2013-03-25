@@ -5,4 +5,4 @@ yes//City3 Server.cs
 //Load all necessary scripts
 exec("Gamemody_City3/ScriptObjects.cs");
 exec("Gamemode_City3/Commands.cs");
-exec("Gamemode_City3/Packages.cs");
+exec("Gamemode_City3/Packages.cs"); 

@@ -33,11 +33,17 @@ function serverCmdGui(%client)
 
 function serverCmdSetAlias(%client,%arg0,%arg1,%arg2)
 {
-	if(!arg2 $= "")
+	if(isObject(%client))
 	{
-		messageClient(%client, '', "\c2 Please keep your alias less than two names. (First and last)");
-		return;
+		if(!arg2 $= "")
+		{
+			messageClient(%client, '', "\c2 Please keep your alias less than two names. (First and last)");
+			return;
+		}
+		if(!%client.C3SetAlias)
+		{
+			%client.C3Alias_First = %arg0;
+			%client.C3Alias_Last = %arg1;
+		}
 	}
-	%client.C3Alias_First = %arg0;
-	%client.C3Alias_Last = %arg1;
 }

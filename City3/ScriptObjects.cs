@@ -43,23 +43,23 @@ function C3Wallet::trade(%this,%client,%target,%obj,%task,%arg)
 			if(%type == 1)
 			{
 				%this.money -= %arg;
-				messageClient(%client, '', "\c2You have paid $" @ %arg @ " to " @ %target @ ".");
+				messageClient(%this.client, '', "\c2You have paid $" @ %arg @ " to " @ %target.name @ ".");
 			}
 			if(%type == 2)
 			{
 				%this.bankm -= %arg;
-				messageClient(%client, '', "\c2You have transfered $" @ %arg @ " to " @ %target @ ".");
+				messageClient(%this.client, '', "\c2You have transfered $" @ %arg @ " to " @ %target.name @ ".");
 			}
 		case "recieve":
 			if(%type == 1)
 			{
 				%this.money += %arg;
-				messageClient(%client, '', "\c2You have recieved $" @ %arg @ " from " @ %target @ ".");
+				messageClient(%this.client, '', "\c2You have recieved $" @ %arg @ " from " @ %target.name @ ".");
 			}
 			if(%type == 2)
 			{
 				%this.bankm += %arg;
-				messageClient(%client, '', "\c2$" @ %arg @ " has been transferred to your account by " @ %target @ ".");
+				messageClient(%this.client, '', "\c2$" @ %arg @ " has been transferred to your account by " @ %target.name @ ".");
 			}
 	}
 	%this.cashUpdated = 1;
@@ -69,8 +69,12 @@ function C3Wallet::Create(%this,%client)
 {
 	if(isObject(%client))
 	{
-		%this.client = %client;
-		%this.client.C3Wallet = %this;
+		if(!isObject(%client.C3Wallet))
+		{
+			%this.client = %client;
+			%this.client.C3Wallet = %this;
+			messageClient(%client, '', "\c2DEBUG: You now have a script object!");
+		}
 	}
 	else
 		return 1;

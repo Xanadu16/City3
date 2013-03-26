@@ -5,6 +5,7 @@ package C3Pack
 		%v = Parent::autoAdminCheck(%client);
 		schedule(500,0,"commandToClient",%client,'C3_Handshake',$C3::Server::Version);
 		C3Wallet.create(%client);
+		C3GetRandomAlias(%client);
 
 		return %v;
 	}
@@ -37,5 +38,5 @@ activatepackage(C3Pack);
 
 function C3_returnHandshake(%client)
 {
-		%client.c3HasClient = 1;
+	%client.c3HasClient = 1;
 }

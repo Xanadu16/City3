@@ -51,5 +51,6 @@ function C3GetRandomAlias(%client)
 	%client.C3Alias_First = %first;
 	%client.C3Alias_Last = %last;
 	%client.C3SetAlias = 1;
-	echo("City3 Console: " @ %client.player @ "'s ALIAS is " @ %client.C3Alias_First @ " " @ %client.C3Alias_Last);
+	if(City3::DebugMode)
+		echo("City3 Console: " @ %client.player @ "'s ALIAS is " @ %client.C3Alias_First @ " " @ %client.C3Alias_Last);
 }

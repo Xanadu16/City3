@@ -73,7 +73,8 @@ function C3Wallet::Create(%this,%client)
 		{
 			%this.client = %client;
 			%this.client.C3Wallet = %this;
-			messageClient(%client, '', "\c2DEBUG: You now have a script object!");
+			if(City3::DebugMode)
+				messageClient(%client, '', "\c2CITY3 DEBUG: You now have a script object!");
 		}
 	}
 	else

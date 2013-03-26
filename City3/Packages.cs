@@ -6,6 +6,8 @@ package C3Pack
 		schedule(500,0,"commandToClient",%client,'C3_Handshake',$C3::Server::Version);
 		C3Wallet.create(%client);
 		C3GetRandomAlias(%client);
+		if($City3::DebugMode)
+			messageClient(%client, '', "Your temporary alias is " @ %client.C3Alias_First @ " " @ %client.C3Alias_Last);
 
 		return %v;
 	}

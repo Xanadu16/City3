@@ -44,7 +44,8 @@ function serverCmdSetAlias(%client,%arg0,%arg1,%arg2)
 		{
 			%client.C3Alias_First = %arg0;
 			%client.C3Alias_Last = %arg1;
-			messageClient(%client, '', "Your alias has been set to " @ %client.C3Alias_First @ " " @ %client.C3Alias_Last);
+			messageClient(%client, '', "\c2Your alias has been set to " @ %client.C3Alias_First @ " " @ %client.C3Alias_Last);	
+			%client.C3SetAlias = 1;
 		}
 	}
 }

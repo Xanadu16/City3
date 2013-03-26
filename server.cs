@@ -46,11 +46,11 @@ function C3GetRandomAlias(%client)
 	%lineCtLast = C3GetLineCount("Add-Ons/Gamemode_City3/City3/Data/LastNames.txt");
 	%randomFirst = getRandom(0,%lineCtFirst);
 	%randomLast = getRandom(0,%lineCtLast);
-	%first = C3GetSpecificLine(%randomFirst);
-	%last = C3GetSpecificLine(%randomLast);
+	%first = C3GetSpecificLine("Add-Ons/Gamemode_City3/City3/Data/FirstNames.txt",%randomFirst);
+	%last = C3GetSpecificLine("Add-Ons/Gamemode_City3/City3/Data/LastNames.txt",%randomLast);
 	%client.C3Alias_First = %first;
 	%client.C3Alias_Last = %last;
 	%client.C3SetAlias = 1;
 	if(City3::DebugMode)
-		echo("City3 Console: " @ %client.player @ "'s ALIAS is " @ %client.C3Alias_First @ " " @ %client.C3Alias_Last);
+		echo("City3 Console: " @ %client.name @ "'s ALIAS is " @ %client.C3Alias_First @ " " @ %client.C3Alias_Last);
 }

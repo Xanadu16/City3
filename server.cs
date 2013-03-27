@@ -50,7 +50,24 @@ function C3GetRandomAlias(%client)
 	%last = C3GetSpecificLine("Add-Ons/Gamemode_City3/City3/Data/LastNames.txt",%randomLast);
 	%client.C3Alias_First = %first;
 	%client.C3Alias_Last = %last;
-	%client.C3SetAlias = 1;
+	%client.C3SetAlias = 0;
 	if($City3::DebugMode)
 		echo("City3 Console: " @ %client.name @ "'s ALIAS is " @ %client.C3Alias_First @ " " @ %client.C3Alias_Last);
+}
+
+function C3JoinGroup(%client,%group)
+{
+	%groupnum = %client.C3Groupnum + 1;
+	%client.C3Group[%groupnum] = %group;
+}
+
+function C3CheckGroupName(%groupname)
+{
+	for(%i=0; %i < $City3::Groupnum; %i++)
+	{
+		%task = $City3::Groups[%i];
+		if(%task $= %groupname)
+			return 1;
+	}
+	return 0;
 }

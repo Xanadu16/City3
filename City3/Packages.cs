@@ -9,7 +9,17 @@ package C3Pack
 		if($City3::DebugMode)
 			messageClient(%client, '', "Your temporary alias is " @ %client.C3Alias_First @ " " @ %client.C3Alias_Last);
 
+		CityDB_loadUser(%this);
+		%this.lvd = getDateTime();
+
 		return %v;
+	}
+
+	function GameConnection::onClientLeaveGame(%this)
+	{
+		CityDB_saveUser(%this);
+
+		parent::onClientLeaveGame(%this);
 	}
 
 	function Armor::onCollision(%this,%obj,%col,%thing,%other) //Cash pickup

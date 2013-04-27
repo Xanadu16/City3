@@ -1,24 +1,3 @@
-package City3DBPKG
-{
-	function GameConnection::autoAdminCheck(%this)
-	{
-		parent::autoAdminCheck(%this);
-
-		CityDB_loadUser(%this);
-
-		%this.lvd = getDateTime();
-	}
-
-	function GameConnection::onClientLeaveGame(%this)
-	{
-		CityDB_saveUser(%this);
-
-		parent::onClientLeaveGame(%this);
-	}
-};
-activatepackage("City3DBPKG");
-
-
 function CityDB_saveUser(%client)
 {
 	%path = $City3::UserSaves @ %client.BL_ID @ ".dat";
@@ -30,7 +9,6 @@ function CityDB_saveUser(%client)
 
 	%file.writeLine(%client.name);
 	%file.writeLine(%client.lvd);
-
 	%file.writeLine(%client.C3Wallet.money);
 	%file.writeLine(%client.C3Wallet.bankm);
 
@@ -52,7 +30,6 @@ function CityDB_loadUser(%client)
 		return false;
 	}
 
-	//I'll make the loading system a lot more dynamic at a later time.
 
 	%file = new FileObject();
 	%file.openForRead(%path);
@@ -66,4 +43,18 @@ function CityDB_loadUser(%client)
 
 	%file.close();
 	%file.delete();
+}
+
+function CityDB_saveGroup(%group)
+{
+	%path = $City3::GroupSaves @ %group.id @ ".dat";
+
+	%file = new FileObject();
+	%file.openForWrite(%path);
+
+	%file.writeLine(%group.name);
+
+	%file.writeLine(%group.cash);
+	%file.writeLine(%group.minerals);
+	%file.writeLine(%group.wood);
 }

@@ -1,6 +1,9 @@
-exec("./City3/ScriptObjects.cs");
 exec("./City3/Commands.cs");
+exec("./City3/Config.cs");
+exec("./City3/Database.cs");
 exec("./City3/Packages.cs");
+exec("./City3/ScriptObjects.cs");
+exec("./City3/Time.cs");
 
 function C3GetLineCount(%doc)
 {

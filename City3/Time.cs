@@ -18,6 +18,23 @@ function C3GetTime(%value)
 	}
 }
 
+function getEnvironmentTime()
+{
+	%pas = $Sim::Time/Daycycle.dayLength;
+	%tim = %pas - mFloor(%pas);
+	while(%tim >= 1)
+		tim--;
+	while(%tim < 0)
+		%tim++;
+	return %tim;
+}
+
+function setEnvironmentTime(%time)
+{
+   dayCycle.setDayOffset(%time-getEnvironmentTime());
+}
+//Thanks for those above 2 functions, marble.
+
 function C3Tick()
 {
 	$City3::Time = C3GetTime("strip");

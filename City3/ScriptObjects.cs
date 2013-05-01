@@ -5,7 +5,7 @@ if(!isObject(C3Wallet))
 
 function C3Wallet::add(%this,%obj,%arg)
 {	
-	switch(%obj)
+	switch$(%obj)
 	{
 		case "money":
 			%this.money += %arg;
@@ -17,7 +17,7 @@ function C3Wallet::add(%this,%obj,%arg)
 
 function C3Wallet::subtract(%this,%client,%obj,%arg)
 {
-	switch(%obj)
+	switch$(%obj)
 	{
 		case "money":
 			%this.money -= %arg;
@@ -29,7 +29,7 @@ function C3Wallet::subtract(%this,%client,%obj,%arg)
 
 function C3Wallet::trade(%this,%client,%target,%obj,%task,%arg)
 {
-	switch(%obj)
+	switch$(%obj)
 	{
 		case "money":
 			%type = 1;
@@ -37,7 +37,7 @@ function C3Wallet::trade(%this,%client,%target,%obj,%task,%arg)
 			%type = 2;
 	}
 
-	switch(%task)
+	switch$(%task)
 	{
 		case "give":
 			if(%type == 1)
@@ -97,7 +97,7 @@ function C3Group::Create(%this,%client,%groupname,%type)
 		return;
 	}
 	%this.name = %groupname;
-	%this.membernum = 0;
+	%this.membernum = 0;	
 	%this.type = %type;
 
 	$City3::Groupnum += 1;
@@ -107,7 +107,7 @@ function C3Group::Create(%this,%client,%groupname,%type)
 	%this.addmember(%client);
 	%this.admin = %client.name;
 
-	messageClient(%client, '', "\c2You have created the group " %groupname @ "!");
+	messageClient(%client, '', "\c2You have created the group " @ %groupname @ "!");
 }
 function C3Group::addmember(%this,%client)
 {

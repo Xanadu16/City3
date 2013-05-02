@@ -100,6 +100,7 @@ function setEnvironmentTime(%time)
 
 function C3Tick(%value)
 {
+	cancel($City3::Tick);
 	if(%value)
 	{
 		echo("City3: Tick system started. Syncing Environment Time.");
